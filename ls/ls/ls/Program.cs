@@ -14,24 +14,19 @@ namespace ls
             int fileFlag = 0;
             string fileName;
             Lister lister = new Lister();
+            List<string> flagList = new List<string>();
             foreach (string str in args)
             {
                 if (str.StartsWith('-'))
                 {
-                    // Do things;
-                    //flagParser(str)???
-                    //Console.WriteLine("hej");
-                    foreach(string str2 in str.Split('-'))
-                    {
-                        fileFlag++;
-                        Console.WriteLine(fileFlag);
-                    }
+                    fileFlag++;
+                    flagList.Add(str);
+                    lister.FlagParser(flagList);
+                    Console.WriteLine(fileFlag);
                 }
                 else
                 {
                     fileName = str;
-                    Console.WriteLine(str);
-                    //fileFlag++;
                     Console.WriteLine("=============================================");
                     lister.FileList(str);
                     Console.WriteLine("=============================================");

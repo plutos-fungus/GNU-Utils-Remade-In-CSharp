@@ -9,6 +9,7 @@ namespace ls
 {
     public class Lister
     {
+        // List ALL entries in the directory \\
         public void FileList(string x)
         {
             DirectoryInfo info = new DirectoryInfo(x);
@@ -18,8 +19,8 @@ namespace ls
             {
                 Console.WriteLine(s);
             }
-            
         }
+        // List only the directories
         public void DirectoryList(string x)
         {
             string[] dirs = Directory.GetDirectories(x, "*", SearchOption.TopDirectoryOnly);
@@ -28,9 +29,13 @@ namespace ls
                 Console.WriteLine(s);
             }
         }
-        public void FlagParser(string x)
+        public void FlagParser(List<string> x)
         {
-            Console.WriteLine("hej");
+            foreach (string s in x) 
+            {
+                Console.WriteLine(s);
+            }
+            //Console.WriteLine(x);
         }
     }
 }
