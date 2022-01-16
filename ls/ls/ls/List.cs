@@ -9,6 +9,27 @@ namespace ls
 {
     public class Lister
     {
+        // Parse and manage all the flags
+        public void FlagParser(List<string> x, string y)
+        {
+            if(x.Count > 1)
+            {
+                if (x[0] == "-d" && x[1] == "-a")
+                {
+                    Console.WriteLine("Sorry, the flag combination {0} {1} is not possible", x[0], x[1]);
+                }
+            }
+            else if (x[0] == "-d")
+            {
+                //Console.WriteLine(y);
+                DirectoryList(y);
+            }
+            else if (x[0] == "-a")
+            {
+                FileList(y);
+            }
+        }
+
         // List ALL entries in the directory \\
         public void FileList(string x)
         {
@@ -28,14 +49,6 @@ namespace ls
             {
                 Console.WriteLine(s);
             }
-        }
-        public void FlagParser(List<string> x)
-        {
-            foreach (string s in x) 
-            {
-                Console.WriteLine(s);
-            }
-            //Console.WriteLine(x);
         }
     }
 }

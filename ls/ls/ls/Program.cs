@@ -21,17 +21,11 @@ namespace ls
                 {
                     fileFlag++;
                     flagList.Add(str);
-                    lister.FlagParser(flagList);
-                    Console.WriteLine(fileFlag);
                 }
                 else
                 {
                     fileName = str;
-                    Console.WriteLine("=============================================");
-                    lister.FileList(str);
-                    Console.WriteLine("=============================================");
-                    lister.DirectoryList(str);
-                    
+                    lister.FlagParser(flagList, fileName);
                 }
                 //if (fileFlag > 1)
                 //{
