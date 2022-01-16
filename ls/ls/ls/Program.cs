@@ -27,10 +27,6 @@ namespace ls
                     fileName = str;
                     lister.FlagParser(flagList, fileName);
                 }
-                //if (fileFlag > 1)
-                //{
-                //    Console.WriteLine("Only one directory at a time");
-                //}
             }
         }
     }
