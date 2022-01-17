@@ -12,7 +12,7 @@ namespace ls
         static void Main(string[] args)
         {
             int fileFlag = 0;
-            string fileName;
+            string filePath;
             Lister lister = new Lister();
             List<string> flagList = new List<string>();
             foreach (string str in args)
@@ -22,11 +22,8 @@ namespace ls
                     fileFlag++;
                     flagList.Add(str);
                 }
-                else
-                {
-                    fileName = str;
-                    lister.FlagParser(flagList, fileName);
-                }
+                filePath = str;
+                lister.FlagParser(flagList, filePath);
             }
         }
     }

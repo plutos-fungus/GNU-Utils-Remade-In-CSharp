@@ -22,11 +22,11 @@ namespace ls
                 {
                     Console.WriteLine("Sorry, the flag combination {0} {1} is not possible", x[0], x[1]);
                 }
-                else if (x[0] == "-d" & x[1] == "-t")
+                else if (x[0] == "-a" & x[1] == "-t")
                 {
                     FileTime(y);
                 }
-                else if (x[0] == "-f" & x[1] == "-t")
+                else if (x[0] == "-d" & x[1] == "-t")
                 {
                     DirectoryTime(y);
                 }
@@ -40,12 +40,15 @@ namespace ls
             {
                 FileList(y);
             }
+            else if (x[0] == "-h")
+            {
+                GetHelp();
+            }
         }
 
         // List ALL entries in the directory \\
         public void FileList(string x)
         {
-            //DirectoryInfo info = new DirectoryInfo(x);
             string[] files = Directory.GetFileSystemEntries(x);
             foreach (string s in files)
             {
@@ -72,6 +75,17 @@ namespace ls
             DirectoryInfo info = new DirectoryInfo(x);
             DateTime time = info.CreationTime;
             Console.WriteLine(time);
+        }
+        public void GetHelp()
+        {
+            Console.WriteLine("-a:          List all enties. Including hidden files.");
+            Console.WriteLine("             Used with -t, print the time of creation of a signle" +
+                "                           file");
+            Console.WriteLine("");
+            Console.WriteLine("-d:          List all directories. Including hidden directories.");
+            Console.WriteLine("             Used with -t, print the time of creation of a signle" +
+                "                           directory");
+            Console.WriteLine("");
         }
     }
 }
