@@ -22,8 +22,13 @@ namespace ls
                     fileFlag++;
                     flagList.Add(str);
                 }
-                filePath = str;
-                lister.FlagParser(flagList, filePath);
+                else
+                {
+
+
+                    filePath = str;
+                    lister.FlagParser(flagList, filePath);
+                }
             }
         }
     }
