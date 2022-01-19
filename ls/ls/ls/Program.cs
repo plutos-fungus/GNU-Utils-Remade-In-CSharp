@@ -24,8 +24,6 @@ namespace ls
                 }
                 else
                 {
-
-
                     filePath = str;
                     lister.FlagParser(flagList, filePath);
                 }
