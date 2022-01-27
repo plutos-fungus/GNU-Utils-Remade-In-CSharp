@@ -15,7 +15,7 @@
                 }
                 else if (!str.StartsWith('-'))
                 {
-                    Console.WriteLine(str);
+                    //Console.WriteLine(str);
                     pathList.Add(str);
                 }
             }

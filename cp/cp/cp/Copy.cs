@@ -10,21 +10,36 @@ namespace cp
     {
         string sourcePath = "";
         string targetPath = "";
-        public void FlagParser(List<string> x, List<string> y)
+        public void FlagParser(List<string> flags, List<string> paths)
         {
-            if (x.Count > 1)
+            if (flags.Count > 1)
             {
-                if (x[0] == "-")
+                if (flags[0] == "-")
                 {
                     Console.WriteLine("Something something file flag");
                 }
             }
             else
             {
-                sourcePath = Convert.ToString(y[0]);
-                targetPath = Convert.ToString(y[1]);
+                sourcePath = Convert.ToString(paths[0]);
+                targetPath = Convert.ToString(paths[1]);
+                FileMover(sourcePath, targetPath);
+            }
+        }
+        public void FileMover(string sourcePath, string targetPath)
+        {
+            if (Directory.Exists(sourcePath) & Directory.Exists(targetPath)) 
+            {
                 Console.WriteLine(sourcePath);
                 Console.WriteLine(targetPath);
+            }
+            else if (!Directory.Exists(sourcePath))
+            {
+                Console.WriteLine("Source path doesn't exist");
+            }
+            else if (!Directory.Exists(targetPath))
+            {
+                Console.WriteLine("Target path doesn't exist");
             }
         }
     }
