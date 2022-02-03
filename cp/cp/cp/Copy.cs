@@ -26,9 +26,10 @@ namespace cp
                 FileMover(sourcePath, targetPath);
             }
         }
+
         public void FileMover(string sourcePath, string targetPath)
         {
-            if (Directory.Exists(sourcePath) & Directory.Exists(targetPath)) 
+            if (File.Exists(sourcePath) & Directory.Exists(targetPath)) 
             {
                 Console.WriteLine(sourcePath);
                 Console.WriteLine(targetPath);
