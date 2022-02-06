@@ -8,39 +8,49 @@ namespace cp
 {
     public class Copy
     {
-        string sourcePath = "";
-        string targetPath = "";
+        private string sourcePath = "";
+        private string targetPath = "";
+        private bool overwritePerm = false;
+        List<string> lastStringOfPath = new List<string>();
         public void FlagParser(List<string> flags, List<string> paths)
         {
             if (flags.Count > 1)
             {
-                if (flags[0] == "-")
+                if (flags[0] == "-o")
                 {
-                    Console.WriteLine("Something something file flag");
+                    Console.WriteLine("Overwrite file = true");
+                    overwritePerm = true;
                 }
             }
             else
             {
+                overwritePerm = false;
                 sourcePath = Convert.ToString(paths[0]);
                 targetPath = Convert.ToString(paths[1]);
-                FileMover(sourcePath, targetPath);
+                int indexOfBackslash = sourcePath.LastIndexOf('\\');
+                foreach(char s in sourcePath)
+                {
+                    if (sourcePath.Length != indexOfBackslash)
+                    {
+                        Console.WriteLine("!=");
+                    }
+                    else
+                    {
+                        Console.WriteLine(s);
+                    }
+                }
+                //FileMover(sourcePath, targetPath, perm);
+                //FileMover(@"C:\Users\Rasmus\Desktop\folder_1\New Text Document.txt", @"C:\Users\Rasmus\Desktop\New Text Document.txt", overwritePerm);
             }
         }
 
-        public void FileMover(string sourcePath, string targetPath)
+        public void FileMover(string sourcePath, string targetPath, bool perm)
         {
-            if (File.Exists(sourcePath) & Directory.Exists(targetPath)) 
+            if (File.Exists(sourcePath) & !File.Exists(targetPath)) 
             {
                 Console.WriteLine(sourcePath);
                 Console.WriteLine(targetPath);
-            }
-            else if (!Directory.Exists(sourcePath))
-            {
-                Console.WriteLine("Source path doesn't exist");
-            }
-            else if (!Directory.Exists(targetPath))
-            {
-                Console.WriteLine("Target path doesn't exist");
+                //File.Copy(sourcePath, targetPath, perm);
             }
         }
     }
